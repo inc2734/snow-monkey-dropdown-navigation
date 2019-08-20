@@ -1,0 +1,28 @@
+{
+  "author": "inc2734",
+  "license": "GPL-2.0+",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^9.6.0",
+    "cpy-cli": "^2.0.0",
+    "cssnano": "^4.1.10",
+    "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^6.1.2",
+    "rimraf": "^2.6.3",
+    "sass-basis": "^9.5.2"
+  },
+  "scripts": {
+    "clean:css": "rimraf dist/css && mkdir -p dist/css",
+    "clean:zip": "rimraf snow-monkey-dropdown-navigation.zip",
+    "css:app:sass": "node-sass src/css/app.scss -o dist/css",
+    "css:app:postcss": "postcss dist/css/app.css -o dist/css/app.min.css -c=postcss.config.js",
+    "css:app": "npm-run-all -s css:app:*",
+    "css:php": "cpy '**/*.php' '../../dist/css' --cwd=src/css --parents",
+    "css": "npm run clean:css && npm-run-all -p css:*",
+    "build": "npm-run-all -p css",
+    "zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='*.ruleset.xml' --exclude='/bin' --exclude='/tests' --exclude='package*.json' . snow-monkey-dropdown-navigation && cd snow-monkey-dropdown-navigation && composer install --no-dev",
+    "zip:archive": "zip -9 -qmr snow-monkey-dropdown-navigation.zip snow-monkey-dropdown-navigation",
+    "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
+  }
+}

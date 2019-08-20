@@ -1,0 +1,70 @@
+@charset 'utf-8';
+
+$_font-path: false;
+$_base-font-size-px: 16px !default;
+$_between-lines: (1rem / 2.3) !default;
+
+@import '../../node_modules/sass-basis/src/css/basis-core';
+
+[id=drawer-nav] {
+  width: auto;
+}
+
+.c-dropdown {
+  @include _font-size-line-height($_base-font-size-px - 2);
+  z-index: 100000;
+
+  > .c-dropdown__menu:last-child,
+  > .c-dropdown__sub-nav:last-child {
+    @include _padding(0, 0, .5);
+  }
+
+  &, a {
+    color: #fff;
+  }
+
+  .#{$_prefix}c-hamburger-btn {
+    &__bar {
+      background-color: #fff;
+    }
+
+    &__label {
+      color: #fff;
+    }
+  }
+
+  &__toggle {
+    @include _transition(transform);
+    transform: rotate(90deg);
+
+    &[aria-expanded="true"] {
+      transform: rotate(-90deg);
+    }
+  }
+
+  &__item {
+    @include _padding(.5, .5, 0);
+  }
+
+  &__submenu {
+    @include _margin-right(-.5);
+  }
+
+  &__sub-nav {
+    @include _font-size-line-height($_base-font-size-px - 4);
+
+    * + & {
+      @include _margin-top(.5);
+      @include _padding-top(.25);
+      border-top: 1px solid rgba(#fff, .4);
+    }
+
+    .c-dropdown__item {
+      @include _padding-top(.25);
+    }
+
+    .c-dropdown__submenu {
+      @include _margin-right(-.25);
+    }
+  }
+}
