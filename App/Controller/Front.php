@@ -26,9 +26,9 @@ class Front {
 	public function _wp_enqueue_scripts() {
 		wp_enqueue_style(
 			'snow-monkey-dropdown-navigation',
-			SNOW_MONKEY_DROPDOWN_NAVIGATION_URL . '/dist/css/app.min.css',
-			[],
-			filemtime( SNOW_MONKEY_DROPDOWN_NAVIGATION_PATH . '/dist/css/app.min.css' )
+			SNOW_MONKEY_DROPDOWN_NAVIGATION_URL . '/dist/css/app.css',
+			[ Helper::get_main_style_handle() ],
+			filemtime( SNOW_MONKEY_DROPDOWN_NAVIGATION_PATH . '/dist/css/app.css' )
 		);
 	}
 
