@@ -11,7 +11,9 @@ $_between-lines: (1rem / 2.3) !default;
 }
 
 .c-dropdown {
-  @include _font-size-line-height($_base-font-size-px - 2);
+  $dropdown-font-size: $_base-font-size-px - 2;
+
+  @include _font-size-line-height($dropdown-font-size);
   z-index: 100000;
 
   > .c-dropdown__menu:last-child,
@@ -21,6 +23,14 @@ $_between-lines: (1rem / 2.3) !default;
 
   &, a {
     color: #fff;
+  }
+
+  .#{$_prefix}c-ic-angle-right {
+    transform: translateY(0) translateX(-.15em);
+
+    &::before {
+      border-color: #fff;
+    }
   }
 
   .#{$_prefix}c-hamburger-btn {
@@ -34,6 +44,7 @@ $_between-lines: (1rem / 2.3) !default;
   }
 
   &__toggle {
+    @include _square(_px2rem(_vertical-rhythm($dropdown-font-size)));
     @include _transition(transform);
     transform: rotate(90deg);
 

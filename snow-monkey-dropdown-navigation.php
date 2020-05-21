@@ -33,7 +33,7 @@ class Bootstrap {
 			return;
 		}
 
-		if ( ! version_compare( $theme->get( 'Version' ), '7.9.0', '>=' ) ) {
+		if ( ! version_compare( $theme->get( 'Version' ), '10.5.2', '>=' ) ) {
 			add_action( 'admin_notices', [ $this, '_admin_notice_invalid_snow_monkey_version' ] );
 			return;
 		}
@@ -78,7 +78,7 @@ class Bootstrap {
 		?>
 		<div class="notice notice-warning is-dismissible">
 			<p>
-				<?php esc_html_e( '[Snow Monkey Dropdown Navigation] Needs the Snow Monkey v7.9 or more.', 'snow-monkey-dropdown-navigation' ); ?>
+				<?php esc_html_e( '[Snow Monkey Dropdown Navigation] Needs the Snow Monkey v10.5.2 or more.', 'snow-monkey-dropdown-navigation' ); ?>
 			</p>
 		</div>
 		<?php
