@@ -3,10 +3,9 @@
  * @package snow-monkey
  * @author inc2734
  * @license GPL-2.0+
- * @version 7.0.0
+ * @version 9.0.0
  */
 
-use Inc2734\Mimizuku_Core\Core;
 use Framework\Helper;
 
 /**
@@ -29,4 +28,48 @@ spl_autoload_register(
 			require_once( $file );
 		}
 	}
+);
+
+/**
+ * Make theme available for translation
+ *
+ * @return void
+ */
+load_theme_textdomain( 'snow-monkey', get_template_directory() . '/languages' );
+
+/**
+ * Sets the content width in pixels, based on the theme's design and stylesheet.
+ */
+if ( ! isset( $content_width ) ) {
+	$content_width = apply_filters( 'snow_monkey_content_width', 1220 );
+}
+
+/**
+ * Loads theme constructer files
+ */
+Helper::include_files( untrailingslashit( __DIR__ ) . '/app/constructor', true );
+
+/**
+ * Loads theme setup files
+ */
+Helper::get_template_parts( untrailingslashit( __DIR__ ) . '/app/setup', true );
+
+/**
+ * Loads theme widget files
+ */
+Helper::get_template_parts( untrailingslashit( __DIR__ ) . '/app/widget', true );
+
+/**
+ * Loads customizer
+ */
+add_action(
+	'init',
+	function() {
+		do_action( 'snow_monkey_pre_load_customizer' );
+		foreach ( [ '/app/customizer' ] as $include ) {
+			Helper::get_template_parts( untrailingslashit( __DIR__ ) . $include );
+		}
+		do_action( 'snow_monkey_post_load_customizer' );
+	},
+	10000
 );
