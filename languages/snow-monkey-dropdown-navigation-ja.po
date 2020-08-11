@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Dropdown Navigation\n"
-"POT-Creation-Date: 2019-08-20 09:48+0900\n"
-"PO-Revision-Date: 2019-08-20 09:49+0900\n"
+"POT-Creation-Date: 2020-08-11 10:44+0900\n"
+"PO-Revision-Date: 2020-08-11 10:44+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: inc2734 <inc@2inc.org>\n"
 "Language: ja\n"
@@ -21,13 +21,24 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: snow-monkey-dropdown-navigation.php:63
+#: snow-monkey-dropdown-navigation.php:73
 msgid "[Snow Monkey Dropdown Navigation] Needs the Snow Monkey."
 msgstr "[Snow Monkey Dropdown Navigation] Snow Monkeyが必要です。"
 
-#: snow-monkey-dropdown-navigation.php:73
-msgid "[Snow Monkey Dropdown Navigation] Needs the Snow Monkey v7.9 or more."
-msgstr "[Snow Monkey Dropdown Navigation] Snow Monkey v7.9以降が必要です。"
+#: snow-monkey-dropdown-navigation.php:88
+msgid ""
+"[Snow Monkey Dropdown Navigation] Needs the Snow Monkey v11.0.0 or more."
+msgstr ""
+"[Snow Monkey Dropdown Navigation] Snow Monkey v11.0.0 以降が必要です。"
+
+#: vendor/inc2734/wp-github-plugin-updater/src/Bootstrap.php:308
+msgid "Failed to get update response."
+msgstr "更新情報の取得に失敗しました。"
+
+#: vendor/inc2734/wp-github-plugin-updater/src/Bootstrap.php:313
+#, php-format
+msgid "[%1$s] %2$s"
+msgstr "[%1$s] %2$s"
 
 #. Plugin Name of the plugin/theme
 msgid "Snow Monkey Dropdown Navigation"
