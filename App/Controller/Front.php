@@ -14,7 +14,7 @@ class Front {
 	public function __construct() {
 		add_action( 'wp_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ] );
 		add_action( 'inc2734_wp_customizer_framework_load_styles', [ $this, '_load_styles' ], 11 );
-		add_filter( 'snow_monkey_template_part_render', [ $this, '_snow_monkey_template_part_render' ], 10, 2 );
+		add_filter( 'snow_monkey_template_part_render_template-parts/nav/drawer', [ $this, '_template_part_render' ] );
 		add_action( 'snow_monkey_prepend_drawer_nav', [ $this, '_add_hamburger_btn' ] );
 	}
 
@@ -48,13 +48,8 @@ class Front {
 	 * @param string $slug
 	 * @return string
 	 */
-	public function _snow_monkey_template_part_render( $html, $slug ) {
-		if ( 'template-parts/nav/drawer' !== $slug ) {
-			return $html;
-		}
-
-		$html = str_replace( 'c-drawer', 'c-dropdown', $html );
-		return $html;
+	public function _template_part_render( $html ) {
+		return str_replace( 'c-drawer', 'c-dropdown', $html );
 	}
 
 	/**
