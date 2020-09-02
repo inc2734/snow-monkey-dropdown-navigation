@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Dropdown Navigation\n"
-"POT-Creation-Date: 2020-08-11 10:44+0900\n"
-"PO-Revision-Date: 2020-08-11 10:44+0900\n"
+"POT-Creation-Date: 2020-09-01 15:44+0900\n"
+"PO-Revision-Date: 2020-09-01 15:45+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: inc2734 <inc@2inc.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -20,22 +20,29 @@ msgstr ""
 "_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SearchPathExcluded-1: .themes\n"
+"X-Poedit-SearchPathExcluded-2: node_modules\n"
+"X-Poedit-SearchPathExcluded-3: vendor\n"
+"X-Poedit-SearchPathExcluded-4: tests\n"
 
 #: snow-monkey-dropdown-navigation.php:73
 msgid "[Snow Monkey Dropdown Navigation] Needs the Snow Monkey."
-msgstr "[Snow Monkey Dropdown Navigation] Snow Monkeyが必要です。"
+msgstr "[Snow Monkey Dropdown Navigation] Snow Monkey が必要です。"
 
-#: snow-monkey-dropdown-navigation.php:88
-msgid ""
-"[Snow Monkey Dropdown Navigation] Needs the Snow Monkey v11.0.0 or more."
-msgstr ""
-"[Snow Monkey Dropdown Navigation] Snow Monkey v11.0.0 以降が必要です。"
+#: snow-monkey-dropdown-navigation.php:93
+#, fuzzy, php-format
+#| msgid ""
+#| "[Snow Monkey Dropdown Navigation] Needs the Snow Monkey v11.0.0 or more."
+msgid "[Snow Monkey Dropdown Navigation] Needs the Snow Monkey %1$s or more."
+msgstr "[Snow Monkey Dropdown Navigation] Snow Monkey %1$s 以降が必要です。"
 
-#: vendor/inc2734/wp-github-plugin-updater/src/Bootstrap.php:308
+#: vendor/inc2734/wp-github-plugin-updater/src/App/Model/GitHubReleases.php:67
+#: vendor/inc2734/wp-github-plugin-updater/src/App/Model/GitHubRepositoryContributors.php:78
 msgid "Failed to get update response."
 msgstr "更新情報の取得に失敗しました。"
 
-#: vendor/inc2734/wp-github-plugin-updater/src/Bootstrap.php:313
+#: vendor/inc2734/wp-github-plugin-updater/src/App/Model/GitHubReleases.php:71
+#: vendor/inc2734/wp-github-plugin-updater/src/App/Model/GitHubRepositoryContributors.php:82
 #, php-format
 msgid "[%1$s] %2$s"
 msgstr "[%1$s] %2$s"

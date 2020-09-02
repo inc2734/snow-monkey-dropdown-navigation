@@ -2,7 +2,7 @@
 /**
  * Plugin name: Snow Monkey Dropdown Navigation
  * Description: Activating this plug-in changes the drawer navigation to drop navigation.
- * Version: 0.2.0
+ * Version: 0.3.0
  * Tested up to: 5.5
  * Requires at least: 5.5
  * Requires PHP: 5.6
@@ -85,7 +85,18 @@ class Bootstrap {
 		?>
 		<div class="notice notice-warning is-dismissible">
 			<p>
-				<?php esc_html_e( '[Snow Monkey Dropdown Navigation] Needs the Snow Monkey v11.1.0 or more.', 'snow-monkey-dropdown-navigation' ); ?>
+				<?php
+				echo esc_html(
+					sprintf(
+						// translators: %1$s: version
+						__(
+							'[Snow Monkey Dropdown Navigation] Needs the Snow Monkey %1$s or more.',
+							'snow-monkey-dropdown-navigation'
+						),
+						'v11.1.0'
+					)
+				);
+				?>
 			</p>
 		</div>
 		<?php
