@@ -3,7 +3,7 @@
  * @package snow-monkey
  * @author inc2734
  * @license GPL-2.0+
- * @version 5.0.0
+ * @version 11.3.3
  */
 
 namespace Framework\Model;
@@ -38,6 +38,12 @@ class Design_Skin {
 	 */
 	protected $plugin;
 
+	/**
+	 * Constructor.
+	 *
+	 * @param string $file Design skin main file path.
+	 * @param array  $options Options.
+	 */
 	public function __construct( $file, $options = [] ) {
 		$this->file = $file;
 
@@ -97,7 +103,7 @@ class Design_Skin {
 	/**
 	 * Load editor style
 	 *
-	 * @param string $mce_css
+	 * @param string $mce_css Comma-delimited list of stylesheets.
 	 * @return string
 	 */
 	public function _load_editor_style( $mce_css ) {
@@ -156,12 +162,11 @@ class Design_Skin {
 	/**
 	 * Return plugin data
 	 *
-	 * @param  string $plugin plugin slug
 	 * @return array
 	 */
 	protected function _get_plugin_data() {
 		$plugin_data = get_file_data(
-			dirname( $this->file ),
+			$this->file,
 			[
 				'label' => 'Plugin Name',
 			],

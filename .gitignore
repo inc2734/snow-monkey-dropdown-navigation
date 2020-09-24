@@ -7,3 +7,6 @@ dist/
 *.sql
 snow-monkey-dropdown-navigation/
 snow-monkey-dropdown-navigation.zip
+/sql/
+/.themes/
+.wp-env.override.json

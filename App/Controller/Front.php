@@ -11,6 +11,9 @@ use Framework\Helper;
 
 class Front {
 
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		add_action( 'wp_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ] );
 		add_action( 'inc2734_wp_customizer_framework_load_styles', [ $this, '_load_styles' ], 11 );
@@ -19,7 +22,7 @@ class Front {
 	}
 
 	/**
-	 * Enqueue assets
+	 * Enqueue assets.
 	 *
 	 * @return void
 	 */
@@ -33,7 +36,7 @@ class Front {
 	}
 
 	/**
-	 * Load PHP files for styles
+	 * Load PHP files for styles.
 	 *
 	 * @return void
 	 */
@@ -44,8 +47,7 @@ class Front {
 	/**
 	 * .c-drawer to .c-dropdown
 	 *
-	 * @param string $html
-	 * @param string $slug
+	 * @param string $html The template HTML.
 	 * @return string
 	 */
 	public function _template_part_render( $html ) {
@@ -53,7 +55,7 @@ class Front {
 	}
 
 	/**
-	 * Add hamburger btn to .c-dropdown
+	 * Add hamburger btn to .c-dropdown.
 	 *
 	 * @return void
 	 */

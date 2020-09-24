@@ -3,7 +3,7 @@
  * @package snow-monkey
  * @author inc2734
  * @license GPL-2.0+
- * @version 10.1.0
+ * @version 11.3.3
  */
 
 namespace Framework\Contract\Model;
@@ -53,7 +53,7 @@ abstract class Page_Header {
 	/**
 	 * Return page header image html
 	 *
-	 * @return void
+	 * @return string The img tag.
 	 */
 	public static function get_the_image() {
 		$cache_key   = md5( json_encode( get_queried_object() ) );
@@ -69,10 +69,10 @@ abstract class Page_Header {
 		$image_url = static::get_image_url();
 		if ( $image_url ) {
 			$image_id = attachment_url_to_postid( $image_url );
-			$post     = get_post( $image_id );
-			$alt      = $post->post_excerpt;
-
 			if ( ! $image_id ) {
+				$post = get_post( $image_id );
+				$alt  = $post ? $post->post_excerpt : '';
+
 				$image = sprintf(
 					'<img src="%1$s" alt="%2$s">',
 					esc_url( $image_url ),
