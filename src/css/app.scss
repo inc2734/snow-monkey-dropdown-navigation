@@ -6,6 +6,10 @@ $_between-lines: (1rem / 2.3) !default;
 
 @import '../../node_modules/sass-basis/src/css/basis-core';
 
+@function var-color-sub-accent() {
+  @return var(--sub-accent-color);
+}
+
 [id=drawer-nav] {
   width: auto;
 }
@@ -13,16 +17,11 @@ $_between-lines: (1rem / 2.3) !default;
 .c-dropdown {
   $dropdown-font-size: $_base-font-size-px - 2;
 
-  @include _font-size-line-height($dropdown-font-size);
+  z-index: 100000;
   background-color: var(--accent-color);
   color: $_color-white; // For IE11
   color: _var-color-white();
-  z-index: 100000;
-
-  > .c-dropdown__menu:last-child,
-  > .c-dropdown__sub-nav:last-child {
-    @include _padding(0, 0, .5);
-  }
+  @include _font-size-line-height($dropdown-font-size);
 
   a {
     color: inherit;
@@ -38,6 +37,8 @@ $_between-lines: (1rem / 2.3) !default;
   }
 
   .#{$_prefix}c-hamburger-btn {
+    @include _margin-right(-1);
+
     &__bar {
       background-color: $_color-white; // For IE11
       background-color: _var-color-white();
@@ -50,6 +51,7 @@ $_between-lines: (1rem / 2.3) !default;
   }
 
   &__toggle {
+    top: _space(.25);
     @include _square(_px2rem(_vertical-rhythm($dropdown-font-size)));
     @include _transition(transform);
     transform: rotate(90deg);
@@ -59,25 +61,49 @@ $_between-lines: (1rem / 2.3) !default;
     }
   }
 
-  &__item {
-    @include _padding(.5, .5, 0);
+  &__menu {
+    @include _padding-top(.25);
+    @include _padding-bottom(.25);
   }
 
-  &__submenu {
-    @include _margin-right(-.5);
+  &__item {
+    @include _padding(.25, 1.25, .25, .5);
+
+    &.sm-nav-menu-item-highlight {
+      background-color: var-color-sub-accent();
+
+      &:first-child {
+        @include _margin-top(-.25);
+      }
+
+      &:last-child {
+        @include _margin-bottom(-.25);
+      }
+    }
+  }
+
+  &__submenu[aria-hidden="false"] {
+    @include _margin(0, -1.25, -.25, 0);
+    @include _padding(.25, 0);
+  }
+
+  &__subitem {
+    @include _padding(.25, 1.25, .25, .5);
+
+    &:last-child {
+      @include _margin-bottom(-.25);
+    }
+
+    &.sm-nav-menu-item-highlight {
+      background-color: var-color-sub-accent();
+    }
   }
 
   &__sub-nav {
     @include _font-size-line-height($_base-font-size-px - 4);
 
     * + & {
-      @include _margin-top(.5);
-      @include _padding-top(.25);
       border-top: 1px solid rgba(#fff, .4);
-    }
-
-    .c-dropdown__item {
-      @include _padding-top(.25);
     }
 
     .c-dropdown__submenu {

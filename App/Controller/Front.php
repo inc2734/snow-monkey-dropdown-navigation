@@ -59,7 +59,7 @@ class Front {
 	 */
 	public function _add_hamburger_btn() {
 		?>
-		<ul class="c-dropdown__menu">
+		<ul class="c-dropdown__menu" style="padding-top: 0; padding-bottom: 0">
 			<li class="c-dropdown__item u-text-right">
 				<?php \Framework\Helper::get_template_part( 'template-parts/header/hamburger-btn' ); ?>
 			</li>
