@@ -6,6 +6,7 @@
  * Tested up to: 5.5
  * Requires at least: 5.5
  * Requires PHP: 5.6
+ * Requires Snow Monkey: 11.1.0
  *
  * @package snow-monkey-dropdown-navigation
  * @author inc2734
@@ -39,12 +40,55 @@ class Bootstrap {
 
 		$theme = wp_get_theme( get_template() );
 		if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->template ) {
-			add_action( 'admin_notices', [ $this, '_admin_notice_no_snow_monkey' ] );
+			add_action(
+				'admin_notices',
+				function() {
+					?>
+					<div class="notice notice-warning is-dismissible">
+						<p>
+							<?php esc_html_e( '[Snow Monkey Dropdown Navigation] Needs the Snow Monkey.', 'snow-monkey-dropdown-navigation' ); ?>
+						</p>
+					</div>
+					<?php
+				}
+			);
 			return;
 		}
 
-		if ( ! version_compare( $theme->get( 'Version' ), '11.1.0', '>=' ) ) {
-			add_action( 'admin_notices', [ $this, '_admin_notice_invalid_snow_monkey_version' ] );
+		$data = get_file_data(
+			__FILE__,
+			[
+				'RequiresSnowMonkey' => 'Requires Snow Monkey',
+			]
+		);
+
+		if (
+			isset( $data['RequiresSnowMonkey'] ) &&
+			version_compare( $theme->get( 'Version' ), $data['RequiresSnowMonkey'], '<' )
+		) {
+			add_action(
+				'admin_notices',
+				function() use ( $data ) {
+					?>
+					<div class="notice notice-warning is-dismissible">
+						<p>
+							<?php
+							echo esc_html(
+								sprintf(
+									// translators: %1$s: version
+									__(
+										'[Snow Monkey Dropdown Navigation] Needs the Snow Monkey %1$s or more.',
+										'snow-monkey-dropdown-navigation'
+									),
+									'v' . $data['RequiresSnowMonkey']
+								)
+							);
+							?>
+						</p>
+					</div>
+					<?php
+				}
+			);
 			return;
 		}
 
@@ -65,47 +109,6 @@ class Bootstrap {
 				'homepage' => 'https://snow-monkey.2inc.org',
 			]
 		);
-	}
-
-	/**
-	 * Admin notice for no Snow Monkey
-	 *
-	 * @return void
-	 */
-	public function _admin_notice_no_snow_monkey() {
-		?>
-		<div class="notice notice-warning is-dismissible">
-			<p>
-				<?php esc_html_e( '[Snow Monkey Dropdown Navigation] Needs the Snow Monkey.', 'snow-monkey-dropdown-navigation' ); ?>
-			</p>
-		</div>
-		<?php
-	}
-
-	/**
-	 * Admin notice for invalid Snow Monkey version
-	 *
-	 * @return void
-	 */
-	public function _admin_notice_invalid_snow_monkey_version() {
-		?>
-		<div class="notice notice-warning is-dismissible">
-			<p>
-				<?php
-				echo esc_html(
-					sprintf(
-						// translators: %1$s: version
-						__(
-							'[Snow Monkey Dropdown Navigation] Needs the Snow Monkey %1$s or more.',
-							'snow-monkey-dropdown-navigation'
-						),
-						'v11.1.0'
-					)
-				);
-				?>
-			</p>
-		</div>
-		<?php
 	}
 }
 

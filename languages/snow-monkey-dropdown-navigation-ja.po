@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Dropdown Navigation\n"
-"POT-Creation-Date: 2020-09-02 10:18+0900\n"
-"PO-Revision-Date: 2020-09-02 10:20+0900\n"
+"POT-Creation-Date: 2020-09-25 22:19+0900\n"
+"PO-Revision-Date: 2020-09-25 22:19+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: inc2734 <inc@2inc.org>\n"
 "Language: ja\n"
@@ -25,11 +25,11 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-3: vendor\n"
 "X-Poedit-SearchPathExcluded-4: tests\n"
 
-#: snow-monkey-dropdown-navigation.php:73
+#: snow-monkey-dropdown-navigation.php:49
 msgid "[Snow Monkey Dropdown Navigation] Needs the Snow Monkey."
 msgstr "[Snow Monkey Dropdown Navigation] Snow Monkey が必要です。"
 
-#: snow-monkey-dropdown-navigation.php:93
+#: snow-monkey-dropdown-navigation.php:80
 #, php-format
 msgid "[Snow Monkey Dropdown Navigation] Needs the Snow Monkey %1$s or more."
 msgstr "[Snow Monkey Dropdown Navigation] Snow Monkey %1$s 以降が必要です。"
