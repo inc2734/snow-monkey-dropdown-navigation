@@ -37,8 +37,6 @@ $_between-lines: (1rem / 2.3) !default;
   }
 
   .#{$_prefix}c-hamburger-btn {
-    @include _margin-right(-1);
-
     &__bar {
       background-color: $_color-white; // For IE11
       background-color: _var-color-white();
@@ -67,7 +65,11 @@ $_between-lines: (1rem / 2.3) !default;
   }
 
   &__item {
-    @include _padding(.25, 1.25, .25, .5);
+    @include _padding(.25, .5);
+
+    &.menu-item-has-children {
+      @include _padding-right(1.25);
+    }
 
     &.sm-nav-menu-item-highlight {
       background-color: var-color-sub-accent();
@@ -88,7 +90,11 @@ $_between-lines: (1rem / 2.3) !default;
   }
 
   &__subitem {
-    @include _padding(.25, 1.25, .25, .5);
+    @include _padding(.25, .5);
+
+    &.menu-item-has-children {
+      @include _padding-right(1.25);
+    }
 
     &:last-child {
       @include _margin-bottom(-.25);
