@@ -1,8 +1,7 @@
 @charset 'utf-8';
 
-$_font-path: false;
 $_base-font-size-px: 16px !default;
-$_between-lines: (1rem / 2.3) !default;
+$_between-lines: (1rem / 2.6) !default;
 
 @import '../../node_modules/sass-basis/src/css/basis-core';
 
@@ -10,8 +9,8 @@ $_between-lines: (1rem / 2.3) !default;
   @return var(--sub-accent-color);
 }
 
-[id=drawer-nav] {
-  width: auto;
+[id="drawer-nav"] {
+  width: auto !important;
 }
 
 .c-dropdown {
@@ -50,7 +49,7 @@ $_between-lines: (1rem / 2.3) !default;
 
   &__toggle {
     top: _space(.25);
-    @include _square(_px2rem(_vertical-rhythm($dropdown-font-size)));
+    @include _square(1rem + $_half-leading * 1rem);
     @include _transition(transform);
     transform: rotate(90deg);
 
@@ -75,17 +74,17 @@ $_between-lines: (1rem / 2.3) !default;
       background-color: var-color-sub-accent();
 
       &:first-child {
-        @include _margin-top(-.25);
+        @include _margin-top(-.25, false);
       }
 
       &:last-child {
-        @include _margin-bottom(-.25);
+        @include _margin-bottom(-.25, false);
       }
     }
   }
 
   &__submenu[aria-hidden="false"] {
-    @include _margin(0, -1.25, -.25, 0);
+    @include _margin(0, -1.25, -.25, 0, false);
     @include _padding(.25, 0);
   }
 
@@ -97,7 +96,7 @@ $_between-lines: (1rem / 2.3) !default;
     }
 
     &:last-child {
-      @include _margin-bottom(-.25);
+      @include _margin-bottom(-.25, false);
     }
 
     &.sm-nav-menu-item-highlight {
@@ -113,7 +112,7 @@ $_between-lines: (1rem / 2.3) !default;
     }
 
     .c-dropdown__submenu {
-      @include _margin-right(-.25);
+      @include _margin-right(-.25, false);
     }
   }
 }

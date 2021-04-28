@@ -39,9 +39,21 @@ define( 'GUTENBERG_LOAD_VENDOR_SCRIPTS', false );
  * Manually load the plugin being tested.
  */
 function _manually_load_plugin() {
-	register_theme_directory( dirname( dirname( __FILE__ ) ) . '/.themes/' );
-	switch_theme( 'snow-monkey' );
-	search_theme_directories();
+	$theme_dir = __DIR__ . '/../.themes/snow-monkey';
+	$current_theme = basename( $theme_dir );
+	$theme_root = dirname( $theme_dir );
+	add_filter( 'theme_root', function() use ( $theme_root ) {
+		return $theme_root;
+	} );
+
+	register_theme_directory( $theme_root );
+
+	add_filter( 'pre_option_template', function() use ( $current_theme ) {
+		return $current_theme;
+	});
+	add_filter( 'pre_option_stylesheet', function() use ( $current_theme ) {
+		return $current_theme;
+	});
 
 	require dirname( dirname( __FILE__ ) ) . '/snow-monkey-dropdown-navigation.php';
 }
@@ -79,4 +91,3 @@ require $_tests_dir . '/includes/bootstrap.php';
 
 // Use existing behavior for wp_die during actual test execution.
 remove_filter( 'wp_die_handler', 'fail_if_died' );
-
