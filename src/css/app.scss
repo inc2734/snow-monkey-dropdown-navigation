@@ -1,7 +1,7 @@
 @charset 'utf-8';
 
 $_base-font-size-px: 16px !default;
-$_between-lines: (1rem / 2.6) !default;
+$_half-leading: .4 !default;
 
 @import '../../node_modules/sass-basis/src/css/basis-core';
 
