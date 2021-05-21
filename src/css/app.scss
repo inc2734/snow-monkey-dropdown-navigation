@@ -18,9 +18,9 @@ $_half-leading: .4 !default;
 
   z-index: 100000;
   background-color: var(--accent-color);
-  color: $_color-white; // For IE11
-  color: _var-color-white();
+  color: $_color-white;
   @include _font-size-line-height($dropdown-font-size);
+  padding-top: 60px;
 
   a {
     color: inherit;
@@ -30,26 +30,41 @@ $_half-leading: .4 !default;
     transform: translateY(0) translateX(-.15em);
 
     &::before {
-      border-color: $_color-white; // For IE11
-      border-color: _var-color-white();
+      border-color: $_color-white;
     }
   }
 
   .#{$_prefix}c-hamburger-btn {
     &__bar {
-      background-color: $_color-white; // For IE11
-      background-color: _var-color-white();
+      background-color: $_color-white;
     }
 
     &__label {
-      color: $_color-white; // For IE11
-      color: _var-color-white();
+      color: $_color-white;
     }
   }
 
   &__toggle {
     top: _space(.25);
-    @include _square(1rem + $_half-leading * 1rem);
+    right: calc(#{ $_container-margin } + 5px); // for IE11
+    right: calc(#{ _var-container-margin-sm() } + 5px + constant(safe-area-inset-right));
+    right: calc(#{ _var-container-margin-sm() } + 5px + env(safe-area-inset-right));
+
+    @supports (-ms-ime-align: auto) {
+      right: calc(#{ _var-container-margin-sm() } + 5px); // for Edge
+    }
+
+    @include _media-min(md) {
+      right: calc(#{ $_container-margin * 2 } + 5px); // for IE11
+      right: calc(#{ _var-container-margin() } + 5px + constant(safe-area-inset-right));
+      right: calc(#{ _var-container-margin() } + 5px + env(safe-area-inset-right));
+
+      @supports (-ms-ime-align: auto) {
+        right: calc(#{ _var-container-margin() } + 5px); // for Edge
+      }
+    }
+
+    @include _square(1rem);
     @include _transition(transform);
     transform: rotate(90deg);
 
@@ -64,10 +79,14 @@ $_half-leading: .4 !default;
   }
 
   &__item {
-    @include _padding(.25, .5);
+    @include _padding-top(.25);
+    @include _padding-bottom(.25);
+    @include _container-padding();
 
     &.menu-item-has-children {
-      @include _padding-right(1.25);
+      > a {
+        @include _padding-right(1);
+      }
     }
 
     &.sm-nav-menu-item-highlight {
@@ -84,19 +103,58 @@ $_half-leading: .4 !default;
   }
 
   &__submenu[aria-hidden="false"] {
-    @include _margin(0, -1.25, -.25, 0, false);
+    @include _margin-bottom(-.25, false);
     @include _padding(.25, 0);
+
+    margin-right: $_container-margin * -1; // for IE11
+    margin-right: calc((#{ _var-container-margin-sm() } + constant(safe-area-inset-right)) * -1);
+    margin-right: calc((#{ _var-container-margin-sm() } + env(safe-area-inset-right)) * -1);
+
+    @supports (-ms-ime-align: auto) {
+      margin-right: calc(#{ _var-container-margin-sm() } * -1); // for Edge
+    }
+
+    @include _media-min(md) {
+      margin-right: $_container-margin * 2 * -1; // for IE11
+      margin-right: calc((#{ _var-container-margin() } + constant(safe-area-inset-right)) * -1);
+      margin-right: calc((#{ _var-container-margin() } + env(safe-area-inset-right)) * -1);
+
+      @supports (-ms-ime-align: auto) {
+        margin-right: calc(#{ _var-container-margin() } * -1); // for Edge
+      }
+    }
   }
 
   &__subitem {
-    @include _padding(.25, .5);
+    @include _padding-top(.25);
+    @include _padding-bottom(.25);
+    @include _padding-left(.5);
+    padding-right: $_container-margin; // for IE11
+    padding-right: calc((#{ _var-container-margin-sm() } + constant(safe-area-inset-right)));
+    padding-right: calc((#{ _var-container-margin-sm() } + env(safe-area-inset-right)));
 
-    &.menu-item-has-children {
-      @include _padding-right(1.25);
+    @supports (-ms-ime-align: auto) {
+      padding-right: calc(#{ _var-container-margin-sm() }); // for Edge
+    }
+
+    @include _media-min(md) {
+      padding-right: $_container-margin * 2 * -1; // for IE11
+      padding-right: calc((#{ _var-container-margin() } + constant(safe-area-inset-right)));
+      padding-right: calc((#{ _var-container-margin() } + env(safe-area-inset-right)));
+
+      @supports (-ms-ime-align: auto) {
+        padding-right: calc(#{ _var-container-margin() }); // for Edge
+      }
     }
 
     &:last-child {
       @include _margin-bottom(-.25, false);
+    }
+
+    &.menu-item-has-children {
+      > a {
+        @include _padding-right(1);
+      }
     }
 
     &.sm-nav-menu-item-highlight {
@@ -113,6 +171,22 @@ $_half-leading: .4 !default;
 
     .c-dropdown__submenu {
       @include _margin-right(-.25, false);
+    }
+  }
+
+  &__controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    @include _container-padding();
+    @include _padding-top(.25);
+    @include _padding-bottom(.25);
+    text-align: right;
+
+    &--left {
+      padding-right: 0;
+      text-align: initial;
     }
   }
 }

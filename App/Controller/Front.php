@@ -19,6 +19,7 @@ class Front {
 		add_action( 'inc2734_wp_customizer_framework_load_styles', [ $this, '_load_styles' ], 11 );
 		add_filter( 'snow_monkey_template_part_render_template-parts/nav/drawer', [ $this, '_template_part_render' ] );
 		add_action( 'snow_monkey_prepend_drawer_nav', [ $this, '_add_hamburger_btn' ] );
+		add_action( 'theme_mod_drawer-nav-type', '__return_false' );
 	}
 
 	/**
@@ -60,12 +61,20 @@ class Front {
 	 * @return void
 	 */
 	public function _add_hamburger_btn() {
+		$hamburger_btn_position = get_theme_mod( 'hamburger-btn-position' );
+		$classes                = array_filter(
+			[
+				'c-dropdown__controls',
+				'left' === $hamburger_btn_position ? 'c-dropdown__controls--left' : '',
+			],
+			'strlen'
+		);
 		?>
-		<ul class="c-dropdown__menu" style="padding-top: 0; padding-bottom: 0">
-			<li class="c-dropdown__item u-text-right">
-				<?php \Framework\Helper::get_template_part( 'template-parts/header/hamburger-btn' ); ?>
-			</li>
-		</ul>
+		<div class="<?php echo esc_attr( join( ' ', $classes ) ); ?>">
+			<div class="c-drawer__control">
+				<?php Helper::get_template_part( 'template-parts/header/hamburger-btn' ); ?>
+			</div>
+		</div>
 		<?php
 	}
 }

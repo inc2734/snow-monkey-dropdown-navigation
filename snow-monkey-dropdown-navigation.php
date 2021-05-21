@@ -6,7 +6,7 @@
  * Tested up to: 5.7
  * Requires at least: 5.5
  * Requires PHP: 5.6
- * Requires Snow Monkey: 11.1.0
+ * Requires Snow Monkey: 14.3.0
  *
  * @package snow-monkey-dropdown-navigation
  * @author inc2734
