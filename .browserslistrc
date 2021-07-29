@@ -1,2 +1,2 @@
-last 2 versions
+extends @wordpress/browserslist-config
 IE 11
