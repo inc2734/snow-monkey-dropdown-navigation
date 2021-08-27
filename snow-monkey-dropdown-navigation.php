@@ -2,7 +2,7 @@
 /**
  * Plugin name: Snow Monkey Dropdown Navigation
  * Description: Activating this plug-in changes the drawer navigation to drop navigation.
- * Version: 1.0.2
+ * Version: 2.0.0
  * Tested up to: 5.8
  * Requires at least: 5.5
  * Requires PHP: 5.6
