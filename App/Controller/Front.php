@@ -17,6 +17,7 @@ class Front {
 	public function __construct() {
 		add_action( 'wp_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ] );
 		add_action( 'inc2734_wp_customizer_framework_load_styles', [ $this, '_load_styles' ], 11 );
+		add_filter( 'inc2734_wp_view_controller_expand_get_template_part', [ $this, '_expand_get_template_part' ], 11, 2 );
 		add_filter( 'snow_monkey_template_part_render_template-parts/nav/drawer', [ $this, '_template_part_render' ] );
 		add_action( 'snow_monkey_prepend_drawer_nav', [ $this, '_add_hamburger_btn' ] );
 		add_action( 'theme_mod_drawer-nav-type', '__return_false' );
@@ -43,6 +44,20 @@ class Front {
 	 */
 	public function _load_styles() {
 		Helper::include_files( SNOW_MONKEY_DROPDOWN_NAVIGATION_PATH . '/dist/css' );
+	}
+
+	/**
+	 * Expand get_template_part().
+	 *
+	 * @param boolean $expand If true, expand get_template_part().
+	 * @param array   $args   The template part args.
+	 * @return boolean
+	 */
+	public function _expand_get_template_part( $expand, $args ) {
+		if ( 'template-parts/nav/drawer' === $args['slug'] ) {
+			return true;
+		}
+		return $expand;
 	}
 
 	/**
