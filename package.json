@@ -43,7 +43,7 @@
     "css:php": "cpy '**/*.php' '../../dist/css' --cwd=src/css --parents",
     "css": "npm run clean:css && npm-run-all -p css:*",
     "build": "npm-run-all -p css",
-    "zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='*.ruleset.xml' --exclude='/tests' --exclude='package*.json' . snow-monkey-dropdown-navigation && && wp-env start && wp-env run composer 'install --no-dev -d snow-monkey-dropdown-navigation'",
+    "zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='*.ruleset.xml' --exclude='/tests' --exclude='package*.json' . snow-monkey-dropdown-navigation && wp-env start && wp-env run composer 'install --no-dev -d snow-monkey-dropdown-navigation'",
     "zip:archive": "zip -9 -qmr snow-monkey-dropdown-navigation.zip snow-monkey-dropdown-navigation",
     "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
   }
