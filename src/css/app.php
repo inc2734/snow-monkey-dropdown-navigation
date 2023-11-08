@@ -33,9 +33,9 @@ if ( 'background-color' !== $drawer_nav_highlight_type ) {
 }
 
 Style::register(
-	[
+	array(
 		'.c-dropdown--highlight-type-background-color .c-dropdown__item.sm-nav-menu-item-highlight',
 		'.c-dropdown--highlight-type-background-color .c-dropdown__subitem.sm-nav-menu-item-highlight',
-	],
+	),
 	'background-color: ' . $sub_accent_color
 );

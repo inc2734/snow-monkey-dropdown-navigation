@@ -15,11 +15,11 @@ class Front {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'wp_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ] );
-		add_action( 'inc2734_wp_customizer_framework_load_styles', [ $this, '_load_styles' ], 11 );
-		add_filter( 'inc2734_wp_view_controller_expand_get_template_part', [ $this, '_expand_get_template_part' ], 11, 2 );
-		add_filter( 'snow_monkey_template_part_render_template-parts/nav/drawer', [ $this, '_template_part_render' ] );
-		add_action( 'snow_monkey_prepend_drawer_nav', [ $this, '_add_hamburger_btn' ] );
+		add_action( 'wp_enqueue_scripts', array( $this, '_wp_enqueue_scripts' ) );
+		add_action( 'inc2734_wp_customizer_framework_load_styles', array( $this, '_load_styles' ), 11 );
+		add_filter( 'inc2734_wp_view_controller_expand_get_template_part', array( $this, '_expand_get_template_part' ), 11, 2 );
+		add_filter( 'snow_monkey_template_part_render_template-parts/nav/drawer', array( $this, '_template_part_render' ) );
+		add_action( 'snow_monkey_prepend_drawer_nav', array( $this, '_add_hamburger_btn' ) );
 		add_action( 'theme_mod_drawer-nav-type', '__return_false' );
 	}
 
@@ -32,7 +32,7 @@ class Front {
 		wp_enqueue_style(
 			'snow-monkey-dropdown-navigation',
 			SNOW_MONKEY_DROPDOWN_NAVIGATION_URL . '/dist/css/app.css',
-			[ Helper::get_main_style_handle() ],
+			array( Helper::get_main_style_handle() ),
 			filemtime( SNOW_MONKEY_DROPDOWN_NAVIGATION_PATH . '/dist/css/app.css' )
 		);
 	}
@@ -78,10 +78,10 @@ class Front {
 	public function _add_hamburger_btn() {
 		$hamburger_btn_position = get_theme_mod( 'hamburger-btn-position' );
 		$classes                = array_filter(
-			[
+			array(
 				'c-dropdown__controls',
 				'left' === $hamburger_btn_position ? 'c-dropdown__controls--left' : '',
-			],
+			),
 			'strlen'
 		);
 		?>

@@ -3,10 +3,10 @@
  * Plugin name: Snow Monkey Dropdown Navigation
  * Description: Activating this plug-in changes the drawer navigation to drop navigation.
  * Version: 2.1.2
- * Tested up to: 5.9
- * Requires at least: 5.5
- * Requires PHP: 5.6
- * Requires Snow Monkey: 15.5.0
+ * Tested up to: 6.4
+ * Requires at least: 6.1
+ * Requires PHP: 7.4
+ * Requires Snow Monkey: 19.0.0
  *
  * @package snow-monkey-dropdown-navigation
  * @author inc2734
@@ -27,7 +27,7 @@ class Bootstrap {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'plugins_loaded', [ $this, '_plugins_loaded' ] );
+		add_action( 'plugins_loaded', array( $this, '_plugins_loaded' ) );
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Bootstrap {
 	public function _plugins_loaded() {
 		load_plugin_textdomain( 'snow-monkey-dropdown-navigation', false, basename( __DIR__ ) . '/languages' );
 
-		add_action( 'init', [ $this, '_activate_autoupdate' ] );
+		add_action( 'init', array( $this, '_activate_autoupdate' ) );
 
 		$theme = wp_get_theme( get_template() );
 		if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->template ) {
@@ -57,9 +57,9 @@ class Bootstrap {
 
 		$data = get_file_data(
 			__FILE__,
-			[
+			array(
 				'RequiresSnowMonkey' => 'Requires Snow Monkey',
-			]
+			)
 		);
 
 		if (
@@ -110,9 +110,9 @@ class Bootstrap {
 			plugin_basename( __FILE__ ),
 			'inc2734',
 			'snow-monkey-dropdown-navigation',
-			[
+			array(
 				'homepage' => 'https://snow-monkey.2inc.org',
-			]
+			)
 		);
 	}
 }

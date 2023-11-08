@@ -1,139 +1,136 @@
-@charset 'utf-8';
-
-$_base-font-size-px: 16px !default;
-$_half-leading: .4 !default;
-
 @import '../../node_modules/sass-basis/src/css/basis-core';
 
-@function var-color-sub-accent() {
-  @return var(--sub-accent-color);
-}
-
 [id="drawer-nav"] {
-  width: auto !important;
+	width: auto !important;
 }
 
 .c-dropdown {
-  $dropdown-font-size: $_base-font-size-px - 2;
+	z-index: 100000;
+	background-color: var(--wp--preset--color--sm-accent);
+	color: var(--wp--preset--color--white);
+	@include _set-font-size-level(-1);
+	padding-top: 60px;
 
-  z-index: 100000;
-  background-color: var(--accent-color);
-  color: $_color-white;
-  @include _font-size-line-height($dropdown-font-size);
-  padding-top: 60px;
+	a {
+		color: inherit;
+	}
 
-  a {
-    color: inherit;
-  }
+	.#{ $_prefix }c-ic-angle-right {
+		&::before {
+			border-color: var(--wp--preset--color--white);
+		}
+	}
 
-  .#{ $_prefix }c-ic-angle-right {
-    &::before {
-      border-color: _var-color-white();
-    }
-  }
+	&__inner {
+		padding-right: var(--_padding-1);
+		padding-left: var(--_padding-1);
+	}
 
-  &__inner {
-    @include _padding(0, .5);
-  }
+	&__toggle {
+		> .#{ $_prefix }c-ic-angle-right {
+			@include _transition(transform);
+			transform-origin: calc(50% + .1em) 50%;
+			transform: translateY(0) rotate(90deg);
+		}
 
-  &__toggle {
-    > .#{ $_prefix }c-ic-angle-right {
-      @include _transition(transform);
-      transform-origin: calc(50% + .1em) 50%;
-      transform: translateY(0) rotate(90deg);
-    }
+		&[aria-expanded="true"] {
+			> .#{ $_prefix }c-ic-angle-right {
+				transform: translateY(0) rotate(-90deg);
+			}
+		}
+	}
 
-    &[aria-expanded="true"] {
-      > .#{ $_prefix }c-ic-angle-right {
-        transform: translateY(0) rotate(-90deg);
-      }
-    }
-  }
+	&__menu,
+	&__submenu {
+		&,
+		& > *:not(:first-child) {
+			margin-top: 0;
+		}
+	}
 
-  &__menu,
-  &__submenu {
-    &,
-    & > *:not(:first-child) {
-      margin-top: 0;
-    }
-  }
+	&__menu {
+		padding-top: var(--_padding-2);
+		padding-bottom: var(--_padding-2);
+	}
 
-  &__menu {
-    @include _padding-top(.25);
-    @include _padding-bottom(.25);
-  }
+	&__item {
+		padding-top: var(--_padding-2);
+		padding-bottom: var(--_padding-2);
+	}
 
-  &__item {
-    @include _padding(.25, 0);
+	&__submenu[aria-hidden="false"] {
+		margin-top: var(--_padding-2);
+		margin-bottom: calc(-1 * var(--_padding-2));
+	}
 
-    &.menu-item-has-children {
-      > a {
-        @include _margin-right(1);
-      }
-    }
+	&__subitem {
+		padding-top: var(--_padding-2);
+		padding-bottom: var(--_padding-2);
+	}
 
-    &.sm-nav-menu-item-highlight {
-      background-color: var-color-sub-accent();
-      @include _margin-right(-.5, false);
-      @include _margin-left(-.5, false);
-      @include _padding-right(.5);
-      @include _padding-left(.5);
+	&__sub-nav {
+		@include _set-font-size-level(-2);
 
-      &:first-child {
-        @include _margin-top(-.25, false);
-      }
+		* + .#{ $_prefix }c-dropdown__sub-nav {
+			border-top: 1px solid rgba(#fff, .4);
+		}
 
-      &:last-child {
-        @include _margin-bottom(-.25, false);
-      }
-    }
-  }
+		.#{ $_prefix }c-dropdown__item {
+			padding-top: calc(.5 * var(--_padding-2));
+			padding-bottom: calc(.5 * var(--_padding-2));
+		}
 
-  &__submenu[aria-hidden="false"] {
-    @include _margin-top(0.25, false);
-    @include _margin-bottom(-.25, false);
-  }
+		.#{ $_prefix }c-dropdown__submenu {
+			margin-right: calc(-1 * var(--_padding-2));
+		}
+	}
 
-  &__subitem {
-    @include _padding(.25, 0);
+	&__controls {
+		position: absolute;
+		top: 0;
+		right: var(--_padding-1);
+		left: var(--_padding-1);
+		padding-top: var(--_padding-2);
+		padding-bottom: var(--_padding-2);
+		text-align: right;
 
-    &.sm-nav-menu-item-highlight {
-      background-color: var-color-sub-accent();
-      @include _margin-right(-.5, false);
-      @include _margin-left(-1, false);
-      @include _padding-right(.5);
-      @include _padding-left(1);
-    }
-  }
+		&--left {
+			padding-right: 0;
+			text-align: initial;
+		}
 
-  &__sub-nav {
-    @include _font-size-line-height($_base-font-size-px - 4);
+		.#{ $_prefix }c-hamburger-btn__bar {
+			background-color: #fff;
+		}
+	}
+}
 
-    * + .#{ $_prefix }c-drawer__sub-nav {
-      border-top: 1px solid rgba(#fff, .4);
-    }
+.#{ $_prefix }c-dropdown--highlight-type-background-color {
+	.#{ $_prefix }c-dropdown__item {
+		&.sm-nav-menu-item-highlight {
+			background-color: var(--wp--preset--color--sm-sub-accent);
+			margin-right: calc(-1 * var(--_padding-1));
+			margin-left: calc(-1 * var(--_padding-1));
+			padding-right: var(--_padding-1);
+			padding-left: var(--_padding-1);
 
-    .#{ $_prefix }c-drawer__submenu {
-      @include _margin-right(-.25, false);
-    }
-  }
+			&:first-child {
+				margin-top: calc(-1 * var(--_padding-2));
+			}
 
-  &__controls {
-    position: absolute;
-    top: 0;
-    right: _space(.5, true, false);
-    left: _space(.5, true, false);
-    @include _padding-top(.25);
-    @include _padding-bottom(.25);
-    text-align: right;
+			&:last-child {
+				margin-bottom: calc(-1 * var(--_padding-2));
+			}
+		}
+	}
 
-    &--left {
-      padding-right: 0;
-      text-align: initial;
-    }
-
-    .#{ $_prefix }c-hamburger-btn__bar {
-      background-color: #fff;
-    }
-  }
+	.#{ $_prefix }c-dropdown__subitem {
+		&.sm-nav-menu-item-highlight {
+			background-color: var(--wp--preset--color--sm-sub-accent);
+			margin-right: calc(-1 * var(--_padding-2));
+			margin-left: calc(-1 * var(--_padding-2));
+			padding-right: var(--_padding-2);
+			padding-left: var(--_padding-2);
+		}
+	}
 }
