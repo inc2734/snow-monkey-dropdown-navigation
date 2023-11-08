@@ -12,3 +12,4 @@ snow-monkey-dropdown-navigation.zip
 /.themes/
 .wp-env.override.json
 /.export/*
+.phpunit.result.cache
