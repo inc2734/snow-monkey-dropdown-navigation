@@ -53,6 +53,8 @@
 		"build": "npm-run-all -p css",
 		"zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='*.ruleset.xml' --exclude='/tests' --exclude='package*.json' . snow-monkey-dropdown-navigation && wp-env start && npm run composer install -- --no-dev -d snow-monkey-dropdown-navigation",
 		"zip:archive": "zip -9 -qmr snow-monkey-dropdown-navigation.zip snow-monkey-dropdown-navigation",
-		"zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
+		"zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive",
+		"make-pot": "npm run wp i18n -- make-pot . ./languages/snow-monkey-dropdown-navigation.pot --exclude=src",
+		"make-php": "npm run cli php -- wp-content/plugins/snow-monkey-dropdown-navigation/bin/l10n.php"
 	}
 }
