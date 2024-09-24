@@ -1,4 +1,4 @@
-@import '../../node_modules/sass-basis/src/css/basis-core';
+@use '../../node_modules/sass-basis/src/css/core';
 
 [id="drawer-nav"] {
 	width: auto !important;
@@ -8,14 +8,14 @@
 	z-index: 100000;
 	background-color: var(--wp--preset--color--sm-accent);
 	color: var(--wp--preset--color--white);
-	@include _set-font-size-level(-1);
+	@include core.set-font-size-level(-1);
 	padding-top: 60px;
 
 	a {
 		color: inherit;
 	}
 
-	.#{ $_prefix }c-ic-angle-right {
+	.c-ic-angle-right {
 		&::before {
 			border-color: var(--wp--preset--color--white);
 		}
@@ -27,14 +27,14 @@
 	}
 
 	&__toggle {
-		> .#{ $_prefix }c-ic-angle-right {
-			@include _transition(transform);
+		> .c-ic-angle-right {
+			@include core.transition(transform);
 			transform-origin: calc(50% + .1em) 50%;
 			transform: translateY(0) rotate(90deg);
 		}
 
 		&[aria-expanded="true"] {
-			> .#{ $_prefix }c-ic-angle-right {
+			> .c-ic-angle-right {
 				transform: translateY(0) rotate(-90deg);
 			}
 		}
@@ -69,18 +69,18 @@
 	}
 
 	&__sub-nav {
-		@include _set-font-size-level(-2);
+		@include core.set-font-size-level(-2);
 
-		* + .#{ $_prefix }c-dropdown__sub-nav {
+		* + .c-dropdown__sub-nav {
 			border-top: 1px solid rgba(#fff, .4);
 		}
 
-		.#{ $_prefix }c-dropdown__item {
+		.c-dropdown__item {
 			padding-top: calc(.5 * var(--_padding-2));
 			padding-bottom: calc(.5 * var(--_padding-2));
 		}
 
-		.#{ $_prefix }c-dropdown__submenu {
+		.c-dropdown__submenu {
 			margin-right: calc(-1 * var(--_padding-2));
 		}
 	}
@@ -99,14 +99,14 @@
 			text-align: initial;
 		}
 
-		.#{ $_prefix }c-hamburger-btn__bar {
+		.c-hamburger-btn__bar {
 			background-color: #fff;
 		}
 	}
 }
 
-.#{ $_prefix }c-dropdown--highlight-type-background-color {
-	.#{ $_prefix }c-dropdown__item {
+.c-dropdown--highlight-type-background-color {
+	.c-dropdown__item {
 		&.sm-nav-menu-item-highlight {
 			background-color: var(--wp--preset--color--sm-sub-accent);
 			margin-right: calc(-1 * var(--_padding-1));
@@ -124,7 +124,7 @@
 		}
 	}
 
-	.#{ $_prefix }c-dropdown__subitem {
+	.c-dropdown__subitem {
 		&.sm-nav-menu-item-highlight {
 			background-color: var(--wp--preset--color--sm-sub-accent);
 			margin-right: calc(-1 * var(--_padding-2));
