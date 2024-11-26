@@ -58,16 +58,16 @@
         },
         {
             "name": "inc2734/wp-github-plugin-updater",
-            "version": "3.1.11",
+            "version": "3.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inc2734/wp-github-plugin-updater.git",
-                "reference": "4a098dfe201b0437aaded896990b0be366b88298"
+                "reference": "3412d02dd047312e90ae4ae344c417c6135ec73e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inc2734/wp-github-plugin-updater/zipball/4a098dfe201b0437aaded896990b0be366b88298",
-                "reference": "4a098dfe201b0437aaded896990b0be366b88298",
+                "url": "https://api.github.com/repos/inc2734/wp-github-plugin-updater/zipball/3412d02dd047312e90ae4ae344c417c6135ec73e",
+                "reference": "3412d02dd047312e90ae4ae344c417c6135ec73e",
                 "shasum": ""
             },
             "require": {
@@ -99,9 +99,9 @@
             "description": "A library for WordPress that automatic plugin updater with GitHub API.",
             "support": {
                 "issues": "https://github.com/inc2734/wp-github-plugin-updater/issues",
-                "source": "https://github.com/inc2734/wp-github-plugin-updater/tree/3.1.11"
+                "source": "https://github.com/inc2734/wp-github-plugin-updater/tree/3.1.12"
             },
-            "time": "2024-11-13T07:02:57+00:00"
+            "time": "2024-11-25T02:14:58+00:00"
         }
     ],
     "packages-dev": [
@@ -2246,16 +2246,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.11.0",
+            "version": "3.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "70c08f8d20c0eb4fe56f26644dd94dae76a7f450"
+                "reference": "19473c30efe4f7b3cd42522d0b2e6e7f243c6f87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/70c08f8d20c0eb4fe56f26644dd94dae76a7f450",
-                "reference": "70c08f8d20c0eb4fe56f26644dd94dae76a7f450",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/19473c30efe4f7b3cd42522d0b2e6e7f243c6f87",
+                "reference": "19473c30efe4f7b3cd42522d0b2e6e7f243c6f87",
                 "shasum": ""
             },
             "require": {
@@ -2322,7 +2322,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-11-12T09:53:29+00:00"
+            "time": "2024-11-16T12:02:36+00:00"
         },
         {
             "name": "theseer/tokenizer",
