@@ -46,7 +46,12 @@ jobs:
     - name: Build project
       run: npm run zip
 
-    - name: Create release
-      run: gh release create "$GITHUB_REF_NAME" ./snow-monkey-dropdown-navigation.zip --verify-tag --title "$GITHUB_REF_NAME" --notes ""
-      env:
-        GH_TOKEN: ${{ github.token }}
+    - name: Create Release and upload asset
+      uses: softprops/action-gh-release@v3
+      with:
+        tag_name: ${{ github.ref_name }}
+        name: ${{ github.ref_name }}
+        files: ./snow-monkey-dropdown-navigation.zip
+        fail_on_unmatched_files: true
+        draft: false
+        prerelease: false
