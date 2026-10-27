@@ -19,7 +19,7 @@ jobs:
     - name: Use Node.js
       uses: actions/setup-node@v7
       with:
-        node-version-file: 'package.json'
+        node-version-file: package.json
         cache: npm
 
     - name: Npm install
@@ -27,7 +27,7 @@ jobs:
 
     - name: Get Composer Cache Directory
       id: composer-cache
-      run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+      run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
 
     - name: Cache vendor
       uses: actions/cache@v6
@@ -36,7 +36,6 @@ jobs:
         key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-composer-
-          ${{ runner.os }}-
 
     - name: Composer install
       run: composer install --no-interaction --prefer-dist --no-progress
@@ -48,10 +47,6 @@ jobs:
       run: npm run zip
 
     - name: Create release
-      uses: softprops/action-gh-release@v3
-      with:
-        name: ${{ github.ref_name }}
-        files: ./snow-monkey-dropdown-navigation.zip
-        fail_on_unmatched_files: true
-        draft: false
-        prerelease: false
+      run: gh release create "$GITHUB_REF_NAME" ./snow-monkey-dropdown-navigation.zip --verify-tag --title "$GITHUB_REF_NAME" --notes ""
+      env:
+        GH_TOKEN: ${{ github.token }}

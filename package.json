@@ -1,16 +1,16 @@
 {
 	"engines": {
-		"node": "^22.11.0 || ^24.11.0 || >=26.0.0",
-		"npm": ">=10.2.3"
+		"node": ">=24.22.1",
+		"npm": ">=11.18.0"
 	},
 	"volta": {
-		"node": "24.19.0"
+		"node": "24.22.1"
 	},
 	"author": "inc2734",
 	"license": "GPL-2.0+",
 	"devDependencies": {
-		"@wordpress/browserslist-config": "^6.53.0",
-		"@wordpress/env": "^11.13.0",
+		"@wordpress/browserslist-config": "^7.0.0",
+		"@wordpress/env": "^12.0.0",
 		"autoprefixer": "^10.5.4",
 		"cpy-cli": "^7.0.0",
 		"cssnano": "^8.0.6",
@@ -43,14 +43,14 @@
 		"test:php:stop": "wp-env stop --config=.wp-env.tests.json",
 		"test-composer": "wp-env run --config=.wp-env.tests.json --env-cwd=\"wp-content/plugins/snow-monkey-dropdown-navigation\" cli composer",
 		"pretest:php:lint": "npm run test:php:start && npm run test-composer install -- --no-interaction",
-		"test:php:lint": "wp-env run --config=.wp-env.tests.json --env-cwd=\"wp-content/plugins/snow-monkey-dropdown-navigation\" wordpress -- vendor/bin/phpcs --standard=.phpcs.xml.dist",
+		"test:php:lint": "npm run test-composer lint",
 		"posttest:php:lint": "npm run test:php:stop",
-		"test:lint:php": "npm run test:php:lint",
+		"test:lint:php": "npm run test:php:lint || (status=$?; npm run test:php:stop; exit $status)",
 		"test:lint": "run-s test:lint:*",
 		"pretest:php:unit": "npm run test:php:start && npm run test-composer install -- --no-interaction && npm run test-composer install-theme",
-		"test:php:unit": "wp-env run --config=.wp-env.tests.json --env-cwd=\"wp-content/plugins/snow-monkey-dropdown-navigation\" wordpress -- vendor/bin/phpunit -c .phpunit.xml.dist --verbose",
+		"test:php:unit": "wp-env run --config=.wp-env.tests.json --env-cwd=\"wp-content/plugins/snow-monkey-dropdown-navigation\" wordpress vendor/bin/phpunit -c .phpunit.xml.dist --verbose",
 		"posttest:php:unit": "npm run test:php:stop",
-		"test:unit:php": "npm run test:php:unit",
+		"test:unit:php": "npm run test:php:unit || (status=$?; npm run test:php:stop; exit $status)",
 		"test:unit": "run-s test:unit:*",
 		"test": "run-s test:lint test:unit",
 		"clean:css": "rimraf dist/css && mkdir -p dist/css",
@@ -59,7 +59,7 @@
 		"css:php": "cpy 'src/css/**/*.php' 'dist/css'",
 		"css": "npm run clean:css && npm-run-all -p css:*",
 		"build": "npm-run-all -p css",
-		"zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='*.ruleset.xml' --exclude='/tests' --exclude='package*.json' . snow-monkey-dropdown-navigation && wp-env start && npm run composer install -- --no-dev -d snow-monkey-dropdown-navigation",
+		"zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='*.ruleset.xml' --exclude='/tests' --exclude='package*.json' . snow-monkey-dropdown-navigation && wp-env start && npm run composer install -- --no-interaction --no-dev -d snow-monkey-dropdown-navigation",
 		"zip:archive": "zip -9 -qmr snow-monkey-dropdown-navigation.zip snow-monkey-dropdown-navigation",
 		"zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive",
 		"make-pot": "wp-env start && npm run wp i18n -- make-pot . ./languages/snow-monkey-dropdown-navigation.pot -- --exclude=.*,src",
